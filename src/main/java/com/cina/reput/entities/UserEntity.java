@@ -10,8 +10,8 @@ import java.util.UUID;
 @Table(name = "user")
 public class UserEntity {
     @Id
-    @GeneratedValue(strategy = GenerationType.UUID)
-    private String id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
     @Column(nullable = false, unique = true)
     private String username;
     @Column(nullable = false)
@@ -25,11 +25,11 @@ public class UserEntity {
     @Column(nullable = false)
     private String surname;
 
-    public String getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

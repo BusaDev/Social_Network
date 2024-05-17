@@ -25,7 +25,6 @@ public class UserService {
         logger.debug("post-mapping: {}", userEntity);
         UserEntity saved = userRepository.save(userEntity);
         modelMapper.map(saved, user);
-        user.setId(saved.getId());
         logger.debug("returned_user: {}", user);
         return user;
     }

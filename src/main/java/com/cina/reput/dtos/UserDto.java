@@ -6,7 +6,7 @@ import java.util.Date;
 import java.util.UUID;
 
 public class UserDto {
-    private String id;
+    private Long id;
     private String username;
     private String password;
     private String email;
@@ -15,11 +15,11 @@ public class UserDto {
     private String firstname;
     private String surname;
 
-    public String getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
