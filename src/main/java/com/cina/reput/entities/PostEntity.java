@@ -1,5 +1,7 @@
 package com.cina.reput.entities;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 @Table
@@ -11,6 +13,8 @@ public class PostEntity {
     @Column(nullable = false)
     private String post;
     @ManyToOne
+    @JoinColumn(name = "user_id")
+    @JsonBackReference
     private UserEntity user;
 
     public Long getId() {

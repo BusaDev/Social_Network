@@ -1,8 +1,11 @@
 package com.cina.reput.dtos;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import java.util.Date;
+import java.util.List;
 import java.util.UUID;
 
 public class UserDto {
@@ -14,6 +17,16 @@ public class UserDto {
     private Date birthDay;
     private String firstname;
     private String surname;
+    @JsonManagedReference
+    private List<PostDTO> post;
+
+    public List<PostDTO> getPost() {
+        return post;
+    }
+
+    public void setPost(List<PostDTO> post) {
+        this.post = post;
+    }
 
     public Long getId() {
         return id;

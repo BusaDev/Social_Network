@@ -1,9 +1,13 @@
 package com.cina.reput.dtos;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 public class PostDTO {
     private Long id;
     private String post;
-    private Long user_id;
+    @JsonBackReference
+    private UserDto user;
 
     public Long getId() {
         return id;
@@ -21,11 +25,11 @@ public class PostDTO {
         this.post = post;
     }
 
-    public Long getUser_id() {
-        return user_id;
+    public UserDto getUser() {
+        return user;
     }
 
-    public void setUser_id(Long user_id) {
-        this.user_id = user_id;
+    public void setUser(UserDto user) {
+        this.user = user;
     }
 }

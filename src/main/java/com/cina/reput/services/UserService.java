@@ -9,6 +9,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 @Service
 public class UserService {
 
@@ -27,5 +29,12 @@ public class UserService {
         modelMapper.map(saved, user);
         logger.debug("returned_user: {}", user);
         return user;
+    }
+
+    public UserDto findById(Long id){
+        UserEntity user = userRepository.findById(id).orElse(null);
+        user.getPost().stream().forEach(postEntity -> logger.debug(postEntity.toString()));
+        UserDto u = modelMapper.map(user, UserDto.class);
+        return u;
     }
 }

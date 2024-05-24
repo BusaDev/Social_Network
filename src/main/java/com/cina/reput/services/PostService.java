@@ -27,7 +27,7 @@ public class PostService {
 
     public PostDTO create(PostDTO post) throws MyException {
         PostEntity postEntity = modelMapper.map(post, PostEntity.class);
-        Optional<UserEntity> newPost = userRepository.findById(post.getUser_id());
+        Optional<UserEntity> newPost = userRepository.findById(post.getUser().getId());
         if(newPost.isPresent()) {
             postEntity.setUser(newPost.get());
         }else{

@@ -1,9 +1,11 @@
 package com.cina.reput.entities;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 
 import java.util.Date;
+import java.util.List;
 import java.util.UUID;
 
 @Entity
@@ -24,6 +26,17 @@ public class UserEntity {
     private String firstname;
     @Column(nullable = false)
     private String surname;
+    @OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
+    @JsonManagedReference
+    private List<PostEntity> post;
+
+    public List<PostEntity> getPost() {
+        return post;
+    }
+
+    public void setPost(List<PostEntity> post) {
+        this.post = post;
+    }
 
     public Long getId() {
         return id;
